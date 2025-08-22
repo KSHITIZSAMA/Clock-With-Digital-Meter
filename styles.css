@@ -1,0 +1,125 @@
+:root {
+  --bg-color: #fbc2eb;
+  --clock-bg: rgba(255, 255, 255, 0.8);
+  --text-color: #333;
+  --hand-hour: #333;
+  --hand-minute: #555;
+  --hand-second: #e74c3c;
+}
+
+body.dark {
+  --bg-color: #1e1e1e;
+  --clock-bg: rgba(50, 50, 50, 0.9);
+  --text-color: #eee;
+  --hand-hour: #eee;
+  --hand-minute: #aaa;
+  --hand-second: #ff6b6b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, var(--bg-color), #a6c1ee);
+  font-family: 'Arial', sans-serif;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  transition: background 0.5s ease;
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  font-size: 1.2em;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+.container {
+  text-align: center;
+}
+
+.clock {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border: 12px solid #fff;
+  border-radius: 50%;
+  background: var(--clock-bg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.hand {
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1);
+}
+
+.hour {
+  height: 6px;
+  background: var(--hand-hour);
+}
+
+.minute {
+  height: 4px;
+  background: var(--hand-minute);
+}
+
+.second {
+  height: 2px;
+  background: var(--hand-second);
+}
+
+.center {
+  width: 14px;
+  height: 14px;
+  background: var(--text-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.numbers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.number {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 1.2em;
+  color: var(--text-color);
+  left: 50%;
+  top: 50%;
+  transform: rotate(calc(30deg * var(--n))) translateY(-135px) rotate(calc(-30deg * var(--n)));
+}
+
+.digital, .date {
+  font-size: 1.8em;
+  background: var(--clock-bg);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-top: 10px;
+}
